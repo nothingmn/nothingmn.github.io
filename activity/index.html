@@ -11,7 +11,7 @@
     <link href="custom.css" rel="stylesheet">
     <!-- Bootstrap -->
     <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-
+    <link href="css/styles.css" rel="stylesheet">
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -21,10 +21,24 @@
   </head>
   <body>
     <div class="container">
-        <div class="blog-header">
-          <h1 class="blog-title">My Activities</h1>
-        </div>
+          <h1>My Activities</h1>
     </div>
+
+    <script id="activity-template" type="x-tmpl-mustache">
+    {{#data}}
+         <div class="panel panel-default">
+           <div class="panel-heading"><a href="#" class="pull-right"></a> <h4>{{Name}} - {{Title}}</h4></div>
+        <div class="panel-body">
+              <p><img src="{{Image}}" class="img-circle pull-left">&nbsp;&nbsp;<a href="#">{{Description}}</a></p>
+              &nbsp;&nbsp;{{humanPublishedDate}}
+              <div class="clearfix"></div>
+              <hr>
+            </div>
+         </div>
+    {{/data}}
+    </script>
+
+
     <div class="container" id="activities">          
     </div>
 
@@ -35,5 +49,7 @@
     <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="custom.js"></script>
     <script src="humane-dates.js"></script>
+    <script src="mustache.min.js"></script>
+
   </body>
 </html>
