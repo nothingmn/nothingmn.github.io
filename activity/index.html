@@ -26,20 +26,31 @@
 
     <script id="activity-template" type="x-tmpl-mustache">
     {{#data}}
-         <div class="panel panel-default">
-           <div class="panel-heading"><a href="#" class="pull-right"></a> <h4>{{Name}} - {{Title}}</h4></div>
+      <div class="panel panel-default">
+        <div class="panel-heading"><a href="#" class="pull-right"></a> <h4>{{Name}} - {{Title}}</h4></div>
         <div class="panel-body">
-              <p><img src="{{Image}}" class="img-circle pull-left">&nbsp;&nbsp;<a href="#">{{Description}}</a></p>
-              &nbsp;&nbsp;{{humanPublishedDate}}
-              <div class="clearfix"></div>
-              <hr>
+          <div class="col-md-6 pull-left">
+            <p><img src="{{Image}}" class="img-circle pull-left">&nbsp;&nbsp;<a href="#">{{Description}}</a></p>
+            &nbsp;&nbsp;{{humanPublishedDate}}
+            <div class="clearfix"></div>
             </div>
-         </div>
+          <div class="col-md-6 pull-right">
+            {{#MetaData.Lat}}              
+            <iframe width="200" height="150" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?zoom=16&key=AIzaSyCo_LJAe4DxFPaC_q8MJ00WJbaU16FttvU&q={{MetaData.Lat}},{{MetaData.Lng}}"></iframe>
+            {{/MetaData.Lat}}
+          </div>
+          <hr>
+        </div>
+      </div>
+    {{/data}}
+    {{^data}}
+      Nothing to show you
     {{/data}}
     </script>
 
 
-    <div class="container" id="activities">          
+    <div class="container" id="activities">     
+      Loading...     
     </div>
 
 
@@ -50,6 +61,7 @@
     <script src="custom.js"></script>
     <script src="humane-dates.js"></script>
     <script src="mustache.min.js"></script>
+    <script src="http://underscorejs.org/underscore-min.js"></script>
 
   </body>
 </html>
