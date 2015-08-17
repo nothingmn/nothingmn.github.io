@@ -13,6 +13,7 @@ $(function() {
 	$.ajax({
 	  url: url,
 	  success: function(data,status,xhr) {
+	  	console.log(data);
 		  	var last = "";
 		  	var list = [];
   	  	    for(var d in data) {
@@ -20,12 +21,12 @@ $(function() {
 		  	 	if(last == "") {
 		  	 		last = item.Title;
 		  	 	} else {
-		  	 		if(last != item.Title) {
+		  	 		if(last != item.Title) {		  	 			
 		  	 			list.push(item);
 		  	 			last = item.Title;
 		  	 		}
 		  	 	}
-				item.DeviceTime = new Date((item.DeviceTime[0] - 621355968000000000) / 10000);
+				item.DeviceTime = new Date((item.DeviceTime[0]- 621355968000000000) / 10000);			
 				item.humanPublishedDate = humaneDate(item.DeviceTime);
 				item.Image = "https://my.moj.io/vehicle/avatar/ebde9622-6a70-4608-9d06-4634bdb346c2?size=Large&imageCode=-8587639033764869069";
 				item.Name = "Robs Truck";
