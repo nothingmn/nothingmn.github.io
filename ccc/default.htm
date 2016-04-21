@@ -35,25 +35,15 @@
 	</td>
 </tr>
 <tr>
-	<td>
+	<td colspan="2">
 		Everyone Else:
 		<br/>
 		<br/>X: <br/>
-		<canvas id="allcanvasX" width="400" height="100"></canvas>
+		<canvas id="allcanvasX" width="800" height="100"></canvas>
 		<br/>Y: <br/>
-		<canvas id="allcanvasY" width="400" height="100"></canvas>
+		<canvas id="allcanvasY" width="800" height="100"></canvas>
 		<br/>Z: <br/>
-		<canvas id="allcanvasZ" width="400" height="100"></canvas>
-	</td>
-	<td>
-		Random Sample: <span id="randomIMEI"></span>
-		<br/>
-		<br/>X: <br/>
-		<canvas id="randomX" width="400" height="100"></canvas>
-		<br/>Y: <br/>
-		<canvas id="randomY" width="400" height="100"></canvas>
-		<br/>Z: <br/>
-		<canvas id="randomZ" width="400" height="100"></canvas>
+		<canvas id="allcanvasZ" width="800" height="100"></canvas>
 	</td>
 </tr>
 </table>
@@ -62,12 +52,13 @@
 </table>
 		<script type="text/javascript">
 
+			window.startTime = new Date();
+			window.count = 0;
 			window.diffs = new Array();
 			var timeDelta = document.getElementById("timeDelta");
 			createCharts("rob");
 			createCharts("tejas");
 			createCharts("allcanvas");
-			createCharts("random");
 
 			function createCharts(elementId) {
 
@@ -94,7 +85,6 @@
 				//console.log("onmessage", event);
 				if(event) {
 					var accel = JSON.parse(event.data);
-
 					accel.DeviceTimeReal = new Date(accel.DeviceTime);
 
 					while( timeDelta.firstChild ) {
@@ -107,22 +97,34 @@
 					window.diffs.push(minutes);
 					if(window.diffs.length>100) window.diffs.pop();
 
-					timeDelta.appendChild( document.createTextNode(Math.round(window.diffs.average(),2)+ " minutes"));
+
+					window.count++;
+
+					var nowDiff = Math.abs( (new Date()) - window.startTime );
+					var nowMinutes = Math.floor((nowDiff/1000)/60);
+
+					var nowSeconds = nowMinutes * 60;
+					//if(nowSeconds<=0) nowSeconds = 1;
+					var msgPerSecond = window.count/nowSeconds;
+
+					timeDelta.appendChild( document.createTextNode(Math.round(window.diffs.average(),2)+ " minutes, " + window.count + " at " + Math.round(msgPerSecond,0) + " msgs per second"));
 
 					accel.DeviceTime = new Date().getTime();//new Date(accel.DeviceTime);	
 					//accel.DeviceTime =(new Date(accel.DeviceTime)).getTime();	
 					//console.log(accel.IMEI, accel.X, accel.Y, accel.Z);
+					
 
-					if(!firstDriver.IMEI) {
-						firstDriver.IMEI = accel.IMEI;
-						var span = document.getElementById("randomIMEI");
-						while( span.firstChild ) {
-    						span.removeChild( span.firstChild );
-						}
 
-						span.appendChild( document.createTextNode(firstDriver.IMEI) );
-						firstDriver.Last = new Date();
-					} 
+					// if(!firstDriver.IMEI) {
+					// 	firstDriver.IMEI = accel.IMEI;
+					// 	var span = document.getElementById("randomIMEI");
+					// 	while( span.firstChild ) {
+    	// 					span.removeChild( span.firstChild );
+					// 	}
+
+					// 	span.appendChild( document.createTextNode(firstDriver.IMEI) );
+					// 	firstDriver.Last = new Date();
+					// } 
 					// if(firstDriver.IMEI) {
 					// 	if(((new Date()) - firstDriver.Last) > 20000) {
 					// 		firstDriver.IMEI = accel.IMEI;
@@ -139,10 +141,10 @@
 						window["robX"].Line.append(accel.DeviceTime, accel.X);
 						window["robY"].Line.append(accel.DeviceTime, accel.Y);
 						window["robZ"].Line.append(accel.DeviceTime, accel.Z);
-					} else if(accel.IMEI === firstDriver.IMEI) {
-						window["randomX"].Line.append(accel.DeviceTime, accel.X);
-						window["randomY"].Line.append(accel.DeviceTime, accel.Y);
-						window["randomZ"].Line.append(accel.DeviceTime, accel.Z);
+					// } else if(accel.IMEI === firstDriver.IMEI) {
+					// 	window["randomX"].Line.append(accel.DeviceTime, accel.X);
+					// 	window["randomY"].Line.append(accel.DeviceTime, accel.Y);
+					// 	window["randomZ"].Line.append(accel.DeviceTime, accel.Z);
 					} else if(accel.IMEI === "357330051383024") {
 						window["tejasX"].Line.append(accel.DeviceTime, accel.X);
 						window["tejasY"].Line.append(accel.DeviceTime, accel.Y);
