@@ -105,7 +105,7 @@
 					var minutes = Math.floor((diff/1000)/60);
 					
 					window.diffs.push(minutes);
-					if(window.diffs.length>10000) window.diffs.pop();
+					if(window.diffs.length>100) window.diffs.pop();
 
 					timeDelta.appendChild( document.createTextNode(Math.round(window.diffs.average(),2)+ " minutes"));
 
