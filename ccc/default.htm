@@ -74,7 +74,7 @@
 
 			}
 			function createChart(elementId, opts) {
-				var smoothie = new SmoothieChart();
+				var smoothie = new SmoothieChart({millisPerPixel:100});
 				smoothie.streamTo(document.getElementById(elementId), 500);
 
 				var line = new TimeSeries();
