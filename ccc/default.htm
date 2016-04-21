@@ -34,15 +34,25 @@
 	</td>
 </tr>
 <tr>
-	<td colspan="2">
+	<td>
 		Everyone Else:
 		<br/>
 		<br/>X: <br/>
-		<canvas id="allcanvasX" width="800" height="100"></canvas>
+		<canvas id="allcanvasX" width="400" height="100"></canvas>
 		<br/>Y: <br/>
-		<canvas id="allcanvasY" width="800" height="100"></canvas>
+		<canvas id="allcanvasY" width="400" height="100"></canvas>
 		<br/>Z: <br/>
-		<canvas id="allcanvasZ" width="800" height="100"></canvas>
+		<canvas id="allcanvasZ" width="400" height="100"></canvas>
+	</td>
+	<td>
+		Random Sample: <span id="randomIMEI"></span>
+		<br/>
+		<br/>X: <br/>
+		<canvas id="randomX" width="400" height="100"></canvas>
+		<br/>Y: <br/>
+		<canvas id="randomY" width="400" height="100"></canvas>
+		<br/>Z: <br/>
+		<canvas id="randomZ" width="400" height="100"></canvas>
 	</td>
 </tr>
 </table>
@@ -54,6 +64,7 @@
 			createCharts("rob");
 			createCharts("tejas");
 			createCharts("allcanvas");
+			createCharts("random");
 
 			function createCharts(elementId) {
 
@@ -83,10 +94,22 @@
 					accel.DeviceTime = new Date().getTime();//new Date(accel.DeviceTime);	
 					//accel.DeviceTime =(new Date(accel.DeviceTime)).getTime();	
 					//console.log(accel.IMEI, accel.X, accel.Y, accel.Z);
+
+					if(!firstDriver.IMEI) {
+						firstDriver.IMEI = accel.IMEI;
+						var span = document.getElementById("randomIMEI");
+						span.appendChild( document.createTextNode(firstDriver.IMEI) );
+						console.log(firstDriver.IMEI);
+					}
+
 					if(accel.IMEI === "357330050459106") {
 						window["robX"].Line.append(accel.DeviceTime, accel.X);
 						window["robY"].Line.append(accel.DeviceTime, accel.Y);
 						window["robZ"].Line.append(accel.DeviceTime, accel.Z);
+					} else if(accel.IMEI === firstDriver.IMEI) {
+						window["randomX"].Line.append(accel.DeviceTime, accel.X);
+						window["randomY"].Line.append(accel.DeviceTime, accel.Y);
+						window["randomZ"].Line.append(accel.DeviceTime, accel.Z);
 					} else if(accel.IMEI === "357330051383024") {
 						window["tejasX"].Line.append(accel.DeviceTime, accel.X);
 						window["tejasY"].Line.append(accel.DeviceTime, accel.Y);
@@ -111,6 +134,8 @@
 			}
 			console.log(dataSocket);
 			console.log('c');
+
+			var firstDriver = {};
 		</script>
 </body>
 </html>
