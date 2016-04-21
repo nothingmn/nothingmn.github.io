@@ -75,7 +75,7 @@
 			}
 			function createChart(elementId, opts) {
 				var smoothie = new SmoothieChart();
-				smoothie.streamTo(document.getElementById(elementId));
+				smoothie.streamTo(document.getElementById(elementId), 500);
 
 				var line = new TimeSeries();
 
