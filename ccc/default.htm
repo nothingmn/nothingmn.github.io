@@ -7,6 +7,7 @@
 <table width="100%">
 <tr>
 	<td align="center">
+	<span id="timeDelta"></span>
 <table>
 <tr>
 	<td>
@@ -60,7 +61,9 @@
 </tr>
 </table>
 		<script type="text/javascript">
-			
+
+			window.diffs = new Array();
+			var timeDelta = document.getElementById("timeDelta");
 			createCharts("rob");
 			createCharts("tejas");
 			createCharts("allcanvas");
@@ -91,6 +94,21 @@
 				//console.log("onmessage", event);
 				if(event) {
 					var accel = JSON.parse(event.data);
+
+					accel.DeviceTimeReal = new Date(accel.DeviceTime);
+
+					while( timeDelta.firstChild ) {
+						timeDelta.removeChild( timeDelta.firstChild );
+					}
+					//console.log(accel.DeviceTimeReal);
+					var diff = Math.abs( (new Date()) - accel.DeviceTimeReal );
+					var minutes = Math.floor((diff/1000)/60);
+					
+					window.diffs.push(minutes);
+					if(window.diffs.length>10000) window.diffs.pop();
+
+					timeDelta.appendChild( document.createTextNode(Math.round(window.diffs.average(),2)+ " minutes"));
+
 					accel.DeviceTime = new Date().getTime();//new Date(accel.DeviceTime);	
 					//accel.DeviceTime =(new Date(accel.DeviceTime)).getTime();	
 					//console.log(accel.IMEI, accel.X, accel.Y, accel.Z);
@@ -151,6 +169,25 @@
 			console.log('c');
 
 			var firstDriver = {};
+
+
+
+			Array.prototype.average=function(){
+			    var sum=0;
+			    var j=0;
+			    for(var i=0;i<this.length;i++){
+			        if(isFinite(this[i])){
+			          sum=sum+parseFloat(this[i]);
+			           j++;
+			        }
+			    }
+			    if(j===0){
+			        return 0;
+			    }else{
+			        return sum/j;
+			    }
+
+			}
 		</script>
 </body>
 </html>
