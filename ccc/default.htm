@@ -1,0 +1,112 @@
+<html>
+<head>
+	<script type="text/javascript" src="smoothie.js"></script>
+
+</head>
+<body>
+<table>
+<tr>
+	<td>
+		Rob:
+		<br/>
+		<br/>X: <br/>
+		<canvas id="robX" width="400" height="100"></canvas>
+		<br/>Y: <br/>
+		<canvas id="robY" width="400" height="100"></canvas>
+		<br/>Z: <br/>
+		<canvas id="robZ" width="400" height="100"></canvas>
+		
+	</td>	
+	<td>
+		Tejas:
+		<br/>
+		<br/>X: <br/>
+		<canvas id="tejasX" width="400" height="100"></canvas>
+		<br/>Y: <br/>
+		<canvas id="tejasY" width="400" height="100"></canvas>
+		<br/>Z: <br/>
+		<canvas id="tejasZ" width="400" height="100"></canvas>
+		
+		
+	</td>
+</tr>
+<tr>
+	<td>
+		Everyone Else:
+		<br/>
+		<br/>X: <br/>
+		<canvas id="allcanvasX" width="400" height="100"></canvas>
+		<br/>Y: <br/>
+		<canvas id="allcanvasY" width="400" height="100"></canvas>
+		<br/>Z: <br/>
+		<canvas id="allcanvasZ" width="400" height="100"></canvas>
+	</td>
+</tr>
+</table>
+
+		<script type="text/javascript">
+			
+			createCharts("rob");
+			createCharts("tejas");
+			createCharts("allcanvas");
+
+			function createCharts(elementId) {
+
+				window[elementId + "X"] = createChart(elementId + "X");
+				window[elementId + "Y"] = createChart(elementId + "Y");
+				window[elementId + "Z"] = createChart(elementId + "Z");
+
+			}
+			function createChart(elementId) {
+				var smoothie = new SmoothieChart();
+				smoothie.streamTo(document.getElementById(elementId));
+
+				var line = new TimeSeries();
+
+				smoothie.addTimeSeries(line);
+		
+				smoothie.Line = line;
+				return smoothie;
+			}
+
+
+			dataSocket = new WebSocket("ws://40.77.98.241:1880/mojio");
+			dataSocket.onmessage = function (event) {
+				//console.log("onmessage", event);
+				if(event) {
+					var accel = JSON.parse(event.data);
+					accel.DeviceTime = new Date().getTime();//new Date(accel.DeviceTime);	
+					//accel.DeviceTime =(new Date(accel.DeviceTime)).getTime();	
+					//console.log(accel.IMEI, accel.X, accel.Y, accel.Z);
+					if(accel.IMEI === "357330050459106") {
+						window["robX"].Line.append(accel.DeviceTime, accel.X);
+						window["robY"].Line.append(accel.DeviceTime, accel.Y);
+						window["robZ"].Line.append(accel.DeviceTime, accel.Z);
+					} else if(accel.IMEI === "357330051383024") {
+						window["tejasX"].Line.append(accel.DeviceTime, accel.X);
+						window["tejasY"].Line.append(accel.DeviceTime, accel.Y);
+						window["tejasZ"].Line.append(accel.DeviceTime, accel.Z);
+						
+					} else {
+						window["allcanvasX"].Line.append(accel.DeviceTime, accel.X);
+						window["allcanvasY"].Line.append(accel.DeviceTime, accel.Y);
+						window["allcanvasZ"].Line.append(accel.DeviceTime, accel.Z);
+
+					}
+				}
+			}
+			dataSocket.onerror = function (event) {
+				console.log("onerror", event);
+			}
+			dataSocket.onopen = function (event) {
+				console.log("onopen", event);
+			}
+			dataSocket.onclose = function (event) {
+				console.log("onclose", event);
+			}
+			console.log(dataSocket);
+			console.log('c');
+		</script>
+</body>
+</html>
+
