@@ -62,7 +62,7 @@
 			var timeDelta = document.getElementById("timeDelta");
 			createCharts("rob");
 			createCharts("tejas");
-			createCharts("allcanvas");
+			//createCharts("allcanvas");
 
 			function createCharts(elementId) {
 
@@ -111,7 +111,7 @@
 					//if(nowSeconds<=0) nowSeconds = 1;
 					var msgPerSecond = window.count/nowSeconds;
 
-					timeDelta.appendChild( document.createTextNode(Math.round(window.diffs.average(),2)+ " minutes, " + window.count + " at " + Math.round(msgPerSecond,0) + " msgs per second"));
+					timeDelta.appendChild( document.createTextNode(Math.round(window.diffs.average(),2)+ " minutes or" +Math.round(window.diffs.average()*60,2)+" hours , Total:" + window.count + " at " + Math.round(msgPerSecond,0) + " msgs per second"));
 
 					accel.DeviceTime = new Date().getTime();//new Date(accel.DeviceTime);	
 					//accel.DeviceTime =(new Date(accel.DeviceTime)).getTime();	
