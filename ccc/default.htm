@@ -68,9 +68,9 @@
 
 			function createCharts(elementId) {
 
-				window[elementId + "X"] = createChart(elementId + "X", { strokeStyle:'rgb(0, 255, 0)', fillStyle:'rgba(0, 255, 0, 0.4)', lineWidth:3 });
-				window[elementId + "Y"] = createChart(elementId + "Y", { strokeStyle:'rgb(255, 0, 0)', fillStyle:'rgba(255, 0, 0, 0.4)', lineWidth:3 });
-				window[elementId + "Z"] = createChart(elementId + "Z", { strokeStyle:'rgb(0, 0, 255)', fillStyle:'rgba(0, 255, 255, 0.4)', lineWidth:3 });
+				window[elementId + "X"] = createChart(elementId + "X", { strokeStyle:'rgb(0, 255, 0)', lineWidth:1 });
+				window[elementId + "Y"] = createChart(elementId + "Y", { strokeStyle:'rgb(255, 0, 0)', lineWidth:1 });
+				window[elementId + "Z"] = createChart(elementId + "Z", { strokeStyle:'rgb(0, 0, 255)', lineWidth:1 });
 
 			}
 			function createChart(elementId, opts) {
@@ -98,9 +98,24 @@
 					if(!firstDriver.IMEI) {
 						firstDriver.IMEI = accel.IMEI;
 						var span = document.getElementById("randomIMEI");
+						while( span.firstChild ) {
+    						span.removeChild( span.firstChild );
+						}
+
 						span.appendChild( document.createTextNode(firstDriver.IMEI) );
-						console.log(firstDriver.IMEI);
-					}
+						firstDriver.Last = new Date();
+					} 
+					// if(firstDriver.IMEI) {
+					// 	if(((new Date()) - firstDriver.Last) > 20000) {
+					// 		firstDriver.IMEI = accel.IMEI;
+					// 		var span = document.getElementById("randomIMEI");
+					// 		while( span.firstChild ) {
+	    // 						span.removeChild( span.firstChild );
+					// 		}
+					// 		span.appendChild( document.createTextNode(firstDriver.IMEI) );
+					// 		firstDriver.Last = new Date();
+					// 	}
+					// }
 
 					if(accel.IMEI === "357330050459106") {
 						window["robX"].Line.append(accel.DeviceTime, accel.X);
