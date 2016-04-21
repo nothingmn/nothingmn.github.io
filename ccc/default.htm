@@ -57,18 +57,18 @@
 
 			function createCharts(elementId) {
 
-				window[elementId + "X"] = createChart(elementId + "X");
-				window[elementId + "Y"] = createChart(elementId + "Y");
-				window[elementId + "Z"] = createChart(elementId + "Z");
+				window[elementId + "X"] = createChart(elementId + "X", { strokeStyle:'rgb(0, 255, 0)', fillStyle:'rgba(0, 255, 0, 0.4)', lineWidth:3 });
+				window[elementId + "Y"] = createChart(elementId + "Y", { strokeStyle:'rgb(255, 0, 0)', fillStyle:'rgba(255, 0, 0, 0.4)', lineWidth:3 });
+				window[elementId + "Z"] = createChart(elementId + "Z", { strokeStyle:'rgb(0, 0, 255)', fillStyle:'rgba(0, 255, 255, 0.4)', lineWidth:3 });
 
 			}
-			function createChart(elementId) {
+			function createChart(elementId, opts) {
 				var smoothie = new SmoothieChart();
 				smoothie.streamTo(document.getElementById(elementId));
 
 				var line = new TimeSeries();
 
-				smoothie.addTimeSeries(line);
+				smoothie.addTimeSeries(line, opts);
 		
 				smoothie.Line = line;
 				return smoothie;
