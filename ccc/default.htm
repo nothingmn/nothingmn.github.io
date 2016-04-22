@@ -11,7 +11,7 @@
 <table>
 <tr>
 	<td>
-		Rob:
+		Rob (357330050459106) :
 		<br/>
 		<br/>X: <br/>
 		<canvas id="robX" width="800" height="100"></canvas>
@@ -24,7 +24,7 @@
 </tr>
 <tr>
 	<td>
-		Tejas:
+		Tejas (357330051383024):
 		<br/>
 		<br/>X: <br/>
 		<canvas id="tejasX" width="800" height="100"></canvas>
@@ -32,6 +32,20 @@
 		<canvas id="tejasY" width="800" height="100"></canvas>
 		<br/>Z: <br/>
 		<canvas id="tejasZ" width="800" height="100"></canvas>
+		
+		
+	</td>
+</tr>
+<tr>
+	<td>
+		Tejas Honda Civic (357330050447671):
+		<br/>
+		<br/>X: <br/>
+		<canvas id="tejasHX" width="800" height="100"></canvas>
+		<br/>Y: <br/>
+		<canvas id="tejasHY" width="800" height="100"></canvas>
+		<br/>Z: <br/>
+		<canvas id="tejasHZ" width="800" height="100"></canvas>
 		
 		
 	</td>
@@ -62,6 +76,8 @@
 			var timeDelta = document.getElementById("timeDelta");
 			createCharts("rob");
 			createCharts("tejas");
+			createCharts("tejasH");
+			
 			//createCharts("allcanvas");
 
 			function createCharts(elementId) {
@@ -154,10 +170,10 @@
 						window["tejasY"].Line.append(accel.DeviceTime, accel.Y);
 						window["tejasZ"].Line.append(accel.DeviceTime, accel.Z);
 						
-					} else {
-						window["allcanvasX"].Line.append(accel.DeviceTime, accel.X);
-						window["allcanvasY"].Line.append(accel.DeviceTime, accel.Y);
-						window["allcanvasZ"].Line.append(accel.DeviceTime, accel.Z);
+					} else if(accel.IMEI === "357330050447671") {
+						window["tejasH"].Line.append(accel.DeviceTime, accel.X);
+						window["tejasH"].Line.append(accel.DeviceTime, accel.Y);
+						window["tejasH"].Line.append(accel.DeviceTime, accel.Z);
 
 					}
 				}
