@@ -1,0 +1,20 @@
+img/ea.jpg
+Enterprise Architecture
+We will work closely with all levels of your organization from Executive to Engineering and IT in order to perform architectural analysis and design for systems spanning your product and services portfolio.  Proven track record at delivering on time and under budget.  
+
+img/communication.gif
+Effective Communication and Collaboration
+We ensure timely and concise communication with all our clients with respect to architectural designs, roadmaps, estimates, implementation, rollout and operational monitoring and management.
+
+Delivery
+Our team specializes in Green Field projects with a proven track record.  We can assist with the implementation of POCs, prototypes or project inception to completion. Remain consistent with our clients medium to long term vision of the overall solution.
+
+Leadership
+We are available to provide mentorship, leadership and expertise in the development of standards, architectural governance, design patterns, and practices.  We have in-depth experience with industry best practices around agile development, continuous delivery, continuous integration, and DevOps/ChatOps.  We can provide guidance on team building, and long term solutions for building and maintaining healthy teams.
+
+Proven Track Record
+With 20+ years of experience, we are the right choice to rely on for delivering large scale distributed systems.  We have a solid understanding of security/access control, scalability, high availability, and concurrency patterns for a variety of domains, including but not limited to high scale IoT solutions, Health Care, Digital Print, Ecommerce, and B2C/B2B patterns and practices.
+
+Future Proof
+Our solutions are crafted to provide our clients with the ability to react and continue to be agile into the future.  We do our best to avoid vendor lock on any given solution, if necessary.  Based on your requirements we can craft a solution that will stand the test of time.  We provide flexibility and creativity in solution design - including leveraging emerging technologies.
+
