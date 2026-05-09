@@ -1,17 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="Ether Solutions — Enterprise architecture, effective communication, delivery, leadership, and future-proof design.">
   <title>Ether Solutions</title>
 
-  <!-- Fonts -->
+  <!-- Fonts: Space Grotesk body + Instrument Serif display + JetBrains Mono labels -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/geist@1.3.1/dist/fonts/geist-sans/style.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <!-- Stylesheet -->
   <link href="css/style.css" rel="stylesheet">
@@ -59,33 +57,51 @@
       <div class="services-list">
 
         <div class="service-item">
-          <h3 class="service-item__name">Enterprise Architecture</h3>
-          <p class="service-item__desc">We will work closely with all levels of your organization from Executive to Engineering and IT in order to perform architectural analysis and design for systems spanning your product and services portfolio. Proven track record at delivering on time and under budget.</p>
+          <span class="service-item__num">01</span>
+          <div>
+            <h3 class="service-item__name">Enterprise Architecture</h3>
+            <p class="service-item__desc">We will work closely with all levels of your organization from Executive to Engineering and IT in order to perform architectural analysis and design for systems spanning your product and services portfolio. Proven track record at delivering on time and under budget.</p>
+          </div>
         </div>
 
         <div class="service-item">
-          <h3 class="service-item__name">Effective Communication and Collaboration</h3>
-          <p class="service-item__desc">We ensure timely and concise communication with all our clients with respect to architectural designs, roadmaps, estimates, implementation, rollout and operational monitoring and management.</p>
+          <span class="service-item__num">02</span>
+          <div>
+            <h3 class="service-item__name">Effective Communication and Collaboration</h3>
+            <p class="service-item__desc">We ensure timely and concise communication with all our clients with respect to architectural designs, roadmaps, estimates, implementation, rollout and operational monitoring and management.</p>
+          </div>
         </div>
 
         <div class="service-item">
-          <h3 class="service-item__name">Delivery</h3>
-          <p class="service-item__desc">Our team specializes in Green Field projects with a proven track record. We can assist with the implementation of POCs, prototypes or project inception to completion. Remain consistent with our clients medium to long term vision of the overall solution.</p>
+          <span class="service-item__num">03</span>
+          <div>
+            <h3 class="service-item__name">Delivery</h3>
+            <p class="service-item__desc">Our team specializes in Green Field projects with a proven track record. We can assist with the implementation of POCs, prototypes or project inception to completion. Remain consistent with our clients medium to long term vision of the overall solution.</p>
+          </div>
         </div>
 
         <div class="service-item">
-          <h3 class="service-item__name">Leadership</h3>
-          <p class="service-item__desc">We are available to provide mentorship, leadership and expertise in the development of standards, architectural governance, design patterns, and practices. We have in-depth experience with industry best practices around agile development, continuous delivery, continuous integration, and DevOps/ChatOps. We can provide guidance on team building, and long term solutions for building and maintaining healthy teams.</p>
+          <span class="service-item__num">04</span>
+          <div>
+            <h3 class="service-item__name">Leadership</h3>
+            <p class="service-item__desc">We are available to provide mentorship, leadership and expertise in the development of standards, architectural governance, design patterns, and practices. We have in-depth experience with industry best practices around agile development, continuous delivery, continuous integration, and DevOps/ChatOps. We can provide guidance on team building, and long term solutions for building and maintaining healthy teams.</p>
+          </div>
         </div>
 
         <div class="service-item">
-          <h3 class="service-item__name">Proven Track Record</h3>
-          <p class="service-item__desc">With 20+ years of experience, we are the right choice to rely on for delivering large scale distributed systems. We have a solid understanding of security/access control, scalability, high availability, and concurrency patterns for a variety of domains, including but not limited to high scale IoT solutions, Health Care, Digital Print, Ecommerce, and B2C/B2B patterns and practices.</p>
+          <span class="service-item__num">05</span>
+          <div>
+            <h3 class="service-item__name">Proven Track Record</h3>
+            <p class="service-item__desc">With 20+ years of experience, we are the right choice to rely on for delivering large scale distributed systems. We have a solid understanding of security/access control, scalability, high availability, and concurrency patterns for a variety of domains, including but not limited to high scale IoT solutions, Health Care, Digital Print, Ecommerce, and B2C/B2B patterns and practices.</p>
+          </div>
         </div>
 
         <div class="service-item">
-          <h3 class="service-item__name">Future Proof</h3>
-          <p class="service-item__desc">Our solutions are crafted to provide our clients with the ability to react and continue to be agile into the future. We do our best to avoid vendor lock on any given solution, if necessary. Based on your requirements we can craft a solution that will stand the test of time. We provide flexibility and creativity in solution design - including leveraging emerging technologies.</p>
+          <span class="service-item__num">06</span>
+          <div>
+            <h3 class="service-item__name">Future Proof</h3>
+            <p class="service-item__desc">Our solutions are crafted to provide our clients with the ability to react and continue to be agile into the future. We do our best to avoid vendor lock on any given solution, if necessary. Based on your requirements we can craft a solution that will stand the test of time. We provide flexibility and creativity in solution design — including leveraging emerging technologies.</p>
+          </div>
         </div>
 
       </div>
@@ -146,7 +162,6 @@
 
   <!-- Minimal JS: smooth scroll + mobile nav close -->
   <script>
-    // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
       anchor.addEventListener('click', function(e) {
         e.preventDefault();
@@ -154,7 +169,6 @@
         if (target) {
           target.scrollIntoView({ behavior: 'smooth' });
         }
-        // Close mobile nav if open
         var navLinks = document.getElementById('navLinks');
         if (navLinks) navLinks.classList.remove('open');
       });

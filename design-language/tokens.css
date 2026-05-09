@@ -1,83 +1,90 @@
 /* ============================================================
    Ether Solutions · Design Language Tokens
-   Philosophy: Build Studio (constraint + authority) + iA (content-first clarity)
+   Philosophy: Pentagram Dark (editorial authority + dark mode)
    
-   One detail at 120%. Restraint everywhere else.
+   Derived from styles 01 (Pentagram) + 10 (Müller-Brockmann):
+   - Black + near-black backgrounds with a single vermillion accent
+   - Space Grotesk geometric sans for body, Instrument Serif for display
+   - Numbered service items, vertical rules, solid-fill CTA
+   - Maximum typographic contrast, zero border-radius, zero gradients
    ============================================================ */
 
 :root {
   /* --- Color --- */
   
-  /* Ink & Paper */
-  --color-bg:          #FAFAF8;   /* warm off-white, never pure white */
-  --color-bg-alt:      #F3F1ED;   /* slightly warmer, for alternating sections */
-  --color-ink:         #1A1A1A;   /* primary text, softer than pure black */
-  --color-ink-muted:   #6B6B6B;   /* secondary text, descriptions */
-  --color-ink-light:   #999999;   /* tertiary, captions, subtle labels */
+  /* Ink & Paper (dark mode) */
+  --color-bg:          #050505;   /* near-black body */
+  --color-bg-alt:      #0C0C0C;   /* alternating sections */
+  --color-ink:         #EDEDED;   /* primary text */
+  --color-ink-muted:   #8A8A8A;   /* secondary text */
+  --color-ink-light:   #555555;   /* tertiary, captions */
   
-  /* Accent: warm brown/amber from the logo palette */
-  --color-accent:       #8B5E3C;   /* primary accent */
-  --color-accent-hover: #A06B42;   /* hover/active state */
-  --color-accent-light: #D4C4B0;   /* light tint for backgrounds, dividers */
+  /* Accent: vermillion red — the one punch color */
+  --color-accent:       #D4380D;
+  --color-accent-hover: #E84D23;
+  --color-accent-light: #3A1A0E;   /* dark tint for selection bg */
   
   /* Structural */
-  --color-nav:          #111111;   /* dark nav bar */
-  --color-nav-text:     #CCCCCC;   /* nav links on dark */
-  --color-nav-text-hover: #FFFFFF; /* nav active/hover */
-  --color-border:       #E8E5E0;   /* subtle warm dividers */
-  --color-rule:         #C8C3BB;   /* slightly stronger rules */
+  --color-nav:          #000000;
+  --color-nav-border:   #1A1A1A;
+  --color-nav-text:     #666666;
+  --color-nav-text-hover: #FFFFFF;
+  --color-border:       #1A1A1A;
+  --color-rule:         #2A2A2A;
   
   /* Semantic */
-  --color-link:         #8B5E3C;
-  --color-link-hover:   #A06B42;
-  --color-selection:    #D4C4B0;
+  --color-link:         #D4380D;
+  --color-link-hover:   #E84D23;
+  --color-selection:    #D4380D;
+  --color-selection-bg: #3A1A0E;
   
-  /* Dark mode section (contact/footer) */
-  --color-dark-bg:      #1A1A1A;
-  --color-dark-text:    #E8E5E0;
-  --color-dark-muted:   #888888;
-  --color-dark-border:  #333333;
+  /* Dark section (contact/footer) — pure black */
+  --color-dark-bg:      #000000;
+  --color-dark-text:    #EDEDED;
+  --color-dark-muted:   #555555;
+  --color-dark-border:  #141414;
   
   /* --- Typography --- */
   
   /* 
-    Instrument Serif: display authority, warmth, editorial character  
-    Geist Sans: clean professional body, not Inter/Roboto
-    JetBrains Mono: technical precision for labels and small details
+    Space Grotesk: geometric rational sans, editorial authority
+    Instrument Serif: warm display serif for headings
+    JetBrains Mono: technical precision for small labels
   */
   --font-display:  'Instrument Serif', Georgia, 'Times New Roman', serif;
-  --font-body:     'Geist Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-body:     'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-mono:     'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
   
-  /* Scale: major third (1.25) with manual adjustments */
-  --text-xs:     0.75rem;    /* 12px — captions, mono labels */
-  --text-sm:     0.875rem;   /* 14px — secondary text */
-  --text-base:   1rem;       /* 16px — body */
-  --text-lg:     1.125rem;   /* 18px — lead paragraphs */
-  --text-xl:     1.25rem;    /* 20px — small headings */
-  --text-2xl:    1.5rem;     /* 24px — section subheadings */
-  --text-3xl:    2rem;       /* 32px — section headings */
-  --text-4xl:    2.5rem;     /* 40px — large headings */
-  --text-5xl:    3.5rem;     /* 56px — hero title */
+  /* Scale: tight modular (major second/third) */
+  --text-xs:     0.6875rem;   /* 11px — labels, mono */
+  --text-sm:     0.8125rem;   /* 13px — secondary */
+  --text-base:   1rem;        /* 16px — body */
+  --text-lg:     1.125rem;    /* 18px — lead */
+  --text-xl:     1.25rem;     /* 20px — service names */
+  --text-2xl:    1.5625rem;   /* 25px — subheadings */
+  --text-3xl:    2rem;        /* 32px — section headings mobile */
+  --text-4xl:    2.75rem;     /* 44px — section headings */
+  --text-5xl:    3.75rem;     /* 60px — hero title */
+  --text-hero:   5.5rem;      /* 88px — display size */
   
-  /* Weights */
+  /* Weights: wide range for editorial contrast */
   --weight-light:    300;
   --weight-regular:  400;
   --weight-medium:   500;
-  --weight-semibold: 600;
+  --weight-bold:     700;
   
   /* Line heights */
-  --leading-tight:  1.2;
-  --leading-snug:   1.35;
-  --leading-normal: 1.6;
-  --leading-relaxed:1.75;
+  --leading-tight:   1.1;
+  --leading-snug:    1.25;
+  --leading-normal:  1.5;
+  --leading-relaxed: 1.7;
   
   /* Letter spacing */
-  --tracking-tight:   -0.02em;
+  --tracking-tight:   -0.03em;
   --tracking-normal:   0;
-  --tracking-wide:    0.05em;
-  --tracking-wider:   0.1em;
-  --tracking-mono:    0.08em;  /* for mono-spaced labels */
+  --tracking-wide:    0.04em;
+  --tracking-wider:   0.12em;
+  --tracking-mono:    0.06em;
   
   /* --- Spacing --- */
   /* 8px base, 4px minor grid */
@@ -93,32 +100,35 @@
   --space-16: 64px;
   --space-24: 96px;
   --space-32: 128px;
+  --space-48: 192px;
   
   /* Section padding */
-  --section-py:       var(--space-24);    /* 96px */
-  --section-py-mobile: var(--space-16);   /* 64px */
+  --section-py:        var(--space-24);
+  --section-py-mobile: var(--space-16);
   
   /* Content width */
-  --content-max:      1120px;
-  --content-narrow:   720px;    /* prose reading width */
+  --content-max:      1040px;
+  --content-narrow:   680px;
   --content-wide:     1400px;
   
   /* --- Borders & Radius --- */
-  --radius-sm:  2px;
-  --radius-md:  4px;
-  --radius-lg:  8px;
-  --radius-xl:  12px;
+  /* Sharp corners only — editorial precision */
+  --radius-sm:  0px;
+  --radius-md:  0px;
+  --radius-lg:  0px;
   
   /* --- Shadows --- */
-  --shadow-subtle:  0 1px 2px rgba(26, 26, 26, 0.04);
-  --shadow-card:    0 4px 24px rgba(26, 26, 26, 0.06);
-  --shadow-hover:   0 8px 32px rgba(26, 26, 26, 0.1);
+  /* No decorative shadows. Structural borders only. */
+  --shadow-subtle: none;
+  --shadow-card:   0 2px 0 0 rgba(255,255,255,0.06);
+  --shadow-hover:  0 4px 0 0 rgba(255,255,255,0.1);
   
   /* --- Transitions --- */
-  --transition-fast:    150ms ease;
-  --transition-base:   250ms ease;
-  --transition-slow:   400ms ease;
+  /* Fast and precise — no slow luxury fades */
+  --transition-fast:    100ms ease;
+  --transition-base:   200ms ease;
+  --transition-slow:   300ms ease;
   
   /* --- Layout --- */
-  --navbar-height: 72px;
+  --navbar-height: 64px;
 }

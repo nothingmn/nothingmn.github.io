@@ -1,77 +1,97 @@
 # Ether Solutions · Design Language
 
-> Philosophy: Build Studio (constraint + authority) crossed with Information Architects (content-first clarity). One detail at 120%. Restraint everywhere else.
+## Philosophy: Pentagram Dark
 
-## Design Direction
+Editorial authority meets dark mode. Derived from two design traditions:
 
-The previous site used a generic Bootstrap "Agency" template with yellow-gold accent (#fed136), Kaushan Script decorative font, Font Awesome circle icons, stock photography, and uppercase section headings. It said "installed a template," not "we build serious things."
+- **Pentagram / Michael Bierut** (style 01): typographic hierarchy as primary visual language, single accent color, content-first clarity
+- **Müller-Brockmann Swiss Grid** (style 10): mathematical precision, zero decoration, objective beauty through constraint
 
-This design language replaces that with a vocabulary of **quiet authority**. The whitespace is the design. The logo carries the brand. The content speaks for itself.
+The result: black + near-black backgrounds with a single vermillion red accent. Space Grotesk for its geometric rationality. Instrument Serif for warmth and editorial character. Zero border-radius. Zero gradients. Numbered services. Vertical accent rule in the hero. Solid-fill CTA button.
 
-## Anti-Slop Checklist
+### Anti-slop checklist
 
-What we removed and why:
+| Avoid | Use instead |
+|-------|-------------|
+| Purple/gradient backgrounds | Pure black (#050505) + near-black (#0C0C0C) section alternation |
+| Rounded cards with left-border accent | Flat grid items with bottom-border separators |
+| Emoji as icons | Bold numbered markers (01-06) in accent color |
+| Inter/Roboto/system font | Space Grotesk (geometric sans) + Instrument Serif (display) |
+| Decorative shadows | Structural borders only (2px top borders, 1px dividers) |
+| Border-radius on anything | Zero radius everywhere |
+| Warm brown/amber (old palette) | Vermillion red (#D4380D) single punch color |
 
-| Pattern | Why removed |
-|---------|------------|
-| Font Awesome circle+icon stacks | Generic template decoration. No icon carries meaningful information here. |
-| Kaushan Script brand font | Decorative script on a consultancy says "party planner," not "strategic partner." |
-| Yellow/gold primary (#fed136) | Classic Agency template default. No connection to the brand. |
-| Uppercase section headings ("SERVICES", "TEAM") | Shouting at the reader. Lowercase with tracking is authoritative. |
-| Stock photo hero background | Adds no information. The whitespace communicates confidence. |
-| Rounded team photos with thick white border | Dated template pattern. Subtle grayscale is more professional. |
-| Bootstrap 3-column card grid | Uniform cards suggest uniform (generic) content. A list respects each service's equal weight without forcing them into visual containers. |
-| Gradient buttons | Aggressive. A bordered link is more refined. |
-| Card left-border accent | AI slop pattern par excellence. |
-| Circular social icon buttons with dark background | Template decoration. A text link is cleaner. |
+## File Structure
 
-## Files
+```
+design-language/
+  README.md            This document
+  tokens.css           All CSS custom properties (colors, type, spacing)
+  components.css       Component classes composed from tokens
 
-- **tokens.css** -- CSS custom properties: colors, typography scale, spacing, shadows, transitions. Import this first.
-- **components.css** -- Component classes composed from tokens. The actual layout and visual rules.
+css/
+  style.css            Compiled production stylesheet (tokens + components + fonts)
 
-## Token Summary
+index.html             Production site (references css/style.css)
+```
 
-### Colors
+## Token Reference
 
-| Token | Value | Purpose |
-|-------|-------|---------|
-| `--color-bg` | `#FAFAF8` | Warm off-white. Never pure white. |
-| `--color-ink` | `#1A1A1A` | Primary text. Softer than black. |
-| `--color-ink-muted` | `#6B6B6B` | Secondary text, descriptions. |
-| `--color-accent` | `#8B5E3C` | Warm brown/amber. From logo palette. Structure, earth, reliability. |
-| `--color-accent-light` | `#D4C4B0` | Light tint for backgrounds, dividers. |
-| `--color-nav` | `#111111` | Dark navigation bar. |
-| `--color-border` | `#E8E5E0` | Subtle warm dividers. |
+### Color Palette
+
+Dark mode primary palette:
+
+| Token | Hex | Usage |
+|-------|-----|-------|
+| `--color-bg` | `#050505` | Page background |
+| `--color-bg-alt` | `#0C0C0C` | Alternating sections (team) |
+| `--color-ink` | `#EDEDED` | Primary text |
+| `--color-ink-muted` | `#8A8A8A` | Descriptions, secondary |
+| `--color-ink-light` | `#555555` | Tertiary, social links |
+| `--color-accent` | `#D4380D` | Vermillion: labels, numbers, CTA, links |
+| `--color-accent-hover` | `#E84D23` | Hover/active state |
+| `--color-accent-light` | `#3A1A0E` | Selection background |
+
+Structural:
+
+| Token | Hex | Usage |
+|-------|-----|-------|
+| `--color-nav` | `#000000` | Nav bar background |
+| `--color-nav-border` | `#1A1A1A` | Nav bottom border |
+| `--color-border` | `#1A1A1A` | Service item dividers |
+| `--color-rule` | `#2A2A2A` | Stronger rules (services top border) |
+
+Dark section (contact/footer):
+
+| Token | Hex | Usage |
+|-------|-----|-------|
+| `--color-dark-bg` | `#000000` | Pure black for contact/footer |
+| `--color-dark-text` | `#EDEDED` | Text on dark sections |
+| `--color-dark-muted` | `#555555` | Footer copyright, social links |
+| `--color-dark-border` | `#141414` | Section/footer top borders |
 
 ### Typography
 
-| Role | Family | Weight |
-|------|--------|--------|
-| Display (headings) | Instrument Serif | Regular (400) |
-| Body | Geist Sans | Regular / Medium |
-| Mono (labels) | JetBrains Mono | Regular |
+| Role | Font | Fallback |
+|------|------|----------|
+| Display (headings) | Instrument Serif | Georgia, Times New Roman, serif |
+| Body | Space Grotesk | system-ui, BlinkMacSystemFont, Segoe UI |
+| Labels (mono) | JetBrains Mono | SF Mono, Fira Code, monospace |
 
-### Spacing
+### Key Design Decisions
 
-8px base grid. Scale: 4, 8, 12, 16, 20, 24, 32, 40, 48, 64, 96, 128px.
+1. **Logo in white via CSS filter** (`brightness(0) invert(1)`) rather than needing a white version of the logo PNG
+2. **Vertical accent rule** (2px x 48px) in the hero instead of horizontal
+3. **Solid-fill red CTA button** instead of outlined
+4. **Numbered service items** (01-06) with grid layout for editorial clarity
+5. **Hero bottom border** (2px) for editorial sectioning
+6. **Contact section top border** (2px) for visual separation
+7. **Team photos**: `grayscale(100%) contrast(1.15) brightness(0.85)`, dropping grayscale on hover
 
-### The 120% Detail
+## Revisions
 
-The hero section: logo rendered large and confident at center, a single thin rule line beneath, tagline in monospaced small caps. That's the one moment of deliberate visual weight. Everything else is restraint.
+### v2.0 (2026-05-09): Pentagram Dark
+Complete redesign from warm-brown light theme to Pentagram Dark. New font stack (Space Grotesk replaces Geist Sans). Numbered services. Vertical hero rule. Solid CTA. Dark-first color system.
 
-## Content Principles
-
-1. **No icons without information.** If an icon doesn't communicate something the text doesn't, it doesn't earn its place.
-2. **No decoration.** Every element serves content. Whitespace serves content too.
-3. **Service items as a list, not cards.** Equal textual weight, thin top border separator, no container.
-4. **Mono-spaced labels.** Section labels and roles use JetBrains Mono with letter-spacing. This says "precision" without saying it.
-5. **One accent, used sparingly.** The warm brown appears in the hero rule, section labels, links, and hover states. Nowhere else.
-
-## Bridges to Other Contexts
-
-This design language can be adapted for:
-
-- **Dark backgrounds** (carousel slides, PDF decks): Swap `--color-bg` / `--color-ink` and use the `--color-dark-*` tokens. See `.section--dark` components.
-- **Print**: Increase font sizes 20%, remove hover states, ensure 300dpi images.
-- **Email**: Flatten to tables, inline styles, Geist Sans fallback to `-apple-system`.
+### v1.0 (2026-05-09): Warm Brown
+Initial design language. Warm off-white backgrounds, brown/amber accents. Geist Sans body. Instrument Serif display. JetBrains Mono labels. Outlined CTA button. Horizontal hero rule.
