@@ -309,6 +309,69 @@ a:hover {
   color: var(--color-ink-muted);
 }
 
+/* --- Publications --- */
+
+.publications-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.publication-item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-6);
+  align-items: start;
+  padding-bottom: var(--space-6);
+  border-bottom: 1px solid var(--color-rule);
+  transition: border-color var(--transition-fast);
+}
+
+.publication-item:hover {
+  border-bottom-color: var(--color-accent);
+}
+
+.publication-item__num {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-bold);
+  letter-spacing: var(--tracking-wider);
+  color: var(--color-accent);
+  padding-top: 3px;
+}
+
+.publication-item__name {
+  font-family: var(--font-body);
+  font-size: var(--text-xl);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-snug);
+  color: var(--color-ink);
+  margin-bottom: var(--space-2);
+  letter-spacing: var(--tracking-tight);
+}
+
+.publication-item__desc {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-relaxed);
+  color: var(--color-ink-muted);
+  margin-bottom: var(--space-3);
+}
+
+.publication-item__link {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-bold);
+  color: var(--color-accent);
+  text-decoration: none;
+  letter-spacing: var(--tracking-wider);
+  transition: color var(--transition-fast);
+}
+
+.publication-item__link:hover {
+  color: var(--color-accent-hover);
+}
+
 /* --- Team --- */
 
 .team-grid {
